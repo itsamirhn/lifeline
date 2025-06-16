@@ -1,18 +1,19 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
 
 import { v4 as uuidv4 } from 'uuid';
 
 // List of adjectives and nouns for generating usernames
-const adjectives = ['happy', 'brave', 'clever', 'swift', 'bright', 'calm', 'eager', 'fierce', 'gentle', 'kind'];
-const nouns = ['panda', 'tiger', 'eagle', 'dolphin', 'wolf', 'fox', 'bear', 'lion', 'hawk', 'deer'];
+const adjectives = [
+	'happy', 'brave', 'clever', 'swift', 'bright', 'calm', 'eager', 'fierce', 'gentle', 'kind',
+	'lively', 'noble', 'proud', 'quiet', 'radiant', 'sweet', 'tender', 'vivid', 'witty', 'zealous',
+	'bold', 'daring', 'elegant', 'friendly', 'graceful', 'honest', 'jolly', 'loyal', 'mighty', 'peaceful',
+	'quick', 'royal', 'strong', 'trusty', 'wise'
+];
+const nouns = [
+	'panda', 'tiger', 'eagle', 'dolphin', 'wolf', 'fox', 'bear', 'lion', 'hawk', 'deer',
+	'falcon', 'jaguar', 'koala', 'lynx', 'otter', 'panther', 'quokka', 'raven', 'shark', 'turtle',
+	'unicorn', 'vulture', 'whale', 'xerus', 'yak', 'zebra', 'alpaca', 'badger', 'cheetah', 'dragon',
+	'elephant', 'flamingo', 'giraffe', 'hippopotamus', 'iguana'
+];
 
 function generateUsername() {
 	const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
