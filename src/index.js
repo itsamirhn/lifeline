@@ -423,7 +423,7 @@ async function handleRssFeed(token, env) {
 	const rss = `<?xml version="1.0" encoding="UTF-8" ?>
 		<rss version="2.0">
 			<channel>
-				<title>${user.username}'s Timeline Updates</title>
+				<title>${user.username}'s Lifeline</title>
 				<description>Personal timeline updates from ${user.username}</description>
 				<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
 				${posts.results.map(post => `
