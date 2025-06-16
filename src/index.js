@@ -318,6 +318,16 @@ async function handleTimelinePage(uuid, env) {
 					</div>
 					
 					<div class="faq">
+						<h2>Get Started:</h2>
+						<ol>
+							<li><strong>Bookmark this page</strong> - it's your only way to post updates</li>
+							<li>Click the yellow button to copy your RSS feed URL</li>
+							<li>Share your RSS feed URL with friends who want to follow your updates</li>
+							<li>Install an RSS reader app (<a href="https://apps.apple.com/app/id533007246" target="_blank">iOS</a> or <a href="https://play.google.com/store/apps/details?id=com.vanniktech.rssreader&hl=en" target="_blank">Android</a>) to follow others</li>
+						</ol>
+					</div>
+					
+					<div class="faq">
 						<h2 class="collapsible collapsed" onclick="toggleTips()">
 							Quick Tips
 							<span class="collapse-icon">▼</span>
