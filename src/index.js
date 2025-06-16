@@ -1,4 +1,3 @@
-
 import { v4 as uuidv4 } from 'uuid';
 
 // List of adjectives and nouns for generating usernames
@@ -23,6 +22,15 @@ function generateUsername() {
 
 function generateRssToken() {
 	return uuidv4();
+}
+
+function escapeXml(unsafe) {
+	return unsafe
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&apos;');
 }
 
 async function handleHomePage() {
@@ -420,7 +428,7 @@ async function handleRssFeed(token, env) {
 				<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
 				${posts.results.map(post => `
 					<item>
-						<description>${post.content}</description>
+						<description>${escapeXml(post.content)}</description>
 						<pubDate>${new Date(post.created_at).toUTCString()}</pubDate>
 					</item>
 				`).join('')}
