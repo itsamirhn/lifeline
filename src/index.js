@@ -29,7 +29,7 @@ async function handleHomePage() {
 		<!DOCTYPE html>
 		<html>
 			<head>
-				<title>Lifeline - Create Your Timeline</title>
+				<title>Lifeline - Create Your Lifeline</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<style>
 					* { box-sizing: border-box; }
@@ -55,6 +55,29 @@ async function handleHomePage() {
 					button:hover { background: #0051a2; }
 					h1 { margin-bottom: 10px; }
 					p { margin-bottom: 30px; color: #666; }
+					.faq {
+						text-align: left;
+						margin: 40px 0;
+						padding: 20px;
+						background: #f8f9fa;
+						border-radius: 8px;
+					}
+					.faq h2 {
+						text-align: center;
+						margin-bottom: 20px;
+						color: #333;
+					}
+					.faq-item {
+						margin-bottom: 20px;
+					}
+					.faq-item h3 {
+						color: #0070f3;
+						margin-bottom: 10px;
+					}
+					.faq-item p {
+						margin-bottom: 15px;
+						color: #444;
+					}
 					
 					/* Mobile styles */
 					@media (max-width: 768px) {
@@ -65,6 +88,10 @@ async function handleHomePage() {
 							min-width: unset;
 							padding: 14px 20px;
 						}
+						.faq {
+							padding: 15px;
+							margin: 30px 0;
+						}
 					}
 					
 					/* Small mobile styles */
@@ -72,14 +99,37 @@ async function handleHomePage() {
 						body { padding: 10px; }
 						h1 { font-size: 20px; }
 						button { font-size: 14px; }
+						.faq {
+							padding: 10px;
+							margin: 20px 0;
+						}
 					}
 				</style>
 			</head>
 			<body>
 				<div class="container">
 					<h1>Welcome to Lifeline</h1>
-					<p>Create your personal timeline and share it with friends via RSS.</p>
-					<button onclick="createTimeline()">Create My Timeline</button>
+					<p>Create your personal lifeline and share it with friends via RSS.</p>
+					<button onclick="createTimeline()">Create My Lifeline</button>
+
+					<div class="faq">
+						<h2>Everything You Need to Know</h2>
+						
+						<div class="faq-item">
+							<h3>🤔 What's the magic behind this?</h3>
+							<p>Think of it as your personal broadcasting station! You get a secret anonymous page with a unique RSS feed that lets you share life updates with anyone you choose - no accounts, no tracking, just pure communication.</p>
+						</div>
+
+						<div class="faq-item">
+							<h3>💡 When would I actually use this?</h3>
+							<p>Perfect for those "I need space but want to keep people updated" moments. Maybe you're going through something tough and don't want to chat, but friends need to know you're okay. Or you want to anonymously broadcast announcements. I personally created this during wartime - when networks are spotty but people need to know you're alive, this becomes a lifeline.</p>
+						</div>
+
+						<div class="faq-item">
+							<h3>🚀 How do I get started?</h3>
+							<p>Hit that create button and boom - you'll land on your personal page with a quirky random username and a secret URL. <strong>Bookmark that URL!</strong> It's your only key to post updates and manage your feed. Share your thoughts, then grab your RSS feed URL (yellow button) and send it to whoever should follow your journey. They'll need an RSS reader app like <a href="https://apps.apple.com/app/id533007246" target="_blank">RSS Mobile</a> to stay tuned in.</p>
+						</div>
+					</div>
 				</div>
 				<script>
 					async function createTimeline() {
@@ -106,7 +156,7 @@ async function handleTimelinePage(uuid, env) {
 		<!DOCTYPE html>
 		<html>
 			<head>
-				<title>${user.username}'s Timeline</title>
+				<title>${user.username}'s Lifeline</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<style>
 					* { box-sizing: border-box; }
@@ -165,6 +215,29 @@ async function handleTimelinePage(uuid, env) {
 						overflow-wrap: break-word;
 					}
 					h1 { margin-bottom: 10px; }
+					.faq {
+						text-align: left;
+						margin: 40px 0;
+						padding: 20px;
+						background: #f8f9fa;
+						border-radius: 8px;
+					}
+					.faq h2 {
+						text-align: center;
+						margin-bottom: 20px;
+						color: #333;
+					}
+					.faq-item {
+						margin-bottom: 20px;
+					}
+					.faq-item h3 {
+						color: #0070f3;
+						margin-bottom: 10px;
+					}
+					.faq-item p {
+						margin-bottom: 15px;
+						color: #444;
+					}
 					
 					/* Mobile styles */
 					@media (max-width: 768px) {
@@ -184,6 +257,10 @@ async function handleTimelinePage(uuid, env) {
 							font-size: 16px; /* Prevents zoom on iOS */
 						}
 						.post { padding: 12px; margin: 10px 0; }
+						.faq {
+							padding: 15px;
+							margin: 30px 0;
+						}
 					}
 					
 					/* Small mobile styles */
@@ -193,18 +270,41 @@ async function handleTimelinePage(uuid, env) {
 						button { padding: 10px 16px; font-size: 14px; }
 						textarea { padding: 10px; }
 						.post { padding: 10px; }
+						.faq {
+							padding: 10px;
+							margin: 20px 0;
+						}
 					}
 				</style>
 			</head>
 			<body>
 				<div class="container">
-					<h1>${user.username}'s Timeline</h1>
+					<h1>${user.username}'s Lifeline</h1>
 					<div class="post-form">
 						<textarea id="content" maxlength="255" placeholder="What's happening? (max 255 characters)"></textarea>
 						<div class="button-group">
 							<button class="blue-button" onclick="postUpdate()">Post Update</button>
 							<button class="yellow-button" onclick="copyRssUrl()">Copy RSS Feed URL</button>
 							<button class="red-button" onclick="regenerateRss()">Regenerate RSS URL</button>
+						</div>
+					</div>
+					
+					<div class="faq">
+						<h2>💡 Quick Tips</h2>
+						
+						<div class="faq-item">
+							<h3>🎭 Want to reveal your identity?</h3>
+							<p>Send your real name in your first update so followers know who you are behind the anonymous username.</p>
+						</div>
+
+						<div class="faq-item">
+							<h3>🔄 RSS feed compromised?</h3>
+							<p>Use the red "Regenerate RSS URL" button when your feed link gets leaked and you want to invalidate previous links before sharing new ones with your friends.</p>
+						</div>
+
+						<div class="faq-item">
+							<h3>😱 Lost your posting page?</h3>
+							<p>Unfortunately, there's no way to recover it unless you find your previous posting URL page! Always bookmark this page - it's your only key to your lifeline.</p>
 						</div>
 					</div>
 				</div>
