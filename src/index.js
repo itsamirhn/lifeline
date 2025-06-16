@@ -127,7 +127,7 @@ async function handleHomePage() {
 
 						<div class="faq-item">
 							<h3>🚀 How do I get started?</h3>
-							<p>Hit that create button and boom - you'll land on your personal page with a quirky random username and a secret URL. <strong>Bookmark that URL!</strong> It's your only key to post updates and manage your feed. Share your thoughts, then grab your RSS feed URL (yellow button) and send it to whoever should follow your journey. They'll need an RSS reader app like <a href="https://apps.apple.com/app/id533007246" target="_blank">RSS Mobile</a> to stay tuned in.</p>
+							<p>Hit that create button and boom - you'll land on your personal page with a quirky random username and a secret URL. <strong>Bookmark that URL!</strong> It's your only key to post updates and manage your feed. Share your thoughts, then grab your RSS feed URL (yellow button) and send it to whoever should follow your journey. They'll need an RSS reader app like <a href="https://apps.apple.com/app/id533007246" target="_blank">RSS Mobile</a> for iOS or <a href="https://play.google.com/store/apps/details?id=com.vanniktech.rssreader&hl=en" target="_blank">RSS Reader</a> for Android to stay tuned in.</p>
 						</div>
 					</div>
 				</div>
@@ -319,7 +319,7 @@ async function handleTimelinePage(uuid, env) {
 					
 					<div class="faq">
 						<h2 class="collapsible collapsed" onclick="toggleTips()">
-							💡 Quick Tips
+							Quick Tips
 							<span class="collapse-icon">▼</span>
 						</h2>
 						
@@ -331,12 +331,12 @@ async function handleTimelinePage(uuid, env) {
 
 							<div class="faq-item">
 								<h3>🔄 RSS feed compromised?</h3>
-								<p>Use the red "Regenerate RSS URL" button when your feed link gets leaked and you want to invalidate previous links before sharing new ones with your friends.</p>
+								<p>Use the <strong>red "Regenerate RSS URL" button</strong> when your feed link gets leaked and you want to invalidate previous links before sharing new ones with your friends.</p>
 							</div>
 
 							<div class="faq-item">
 								<h3>😱 Lost your posting page?</h3>
-								<p>Unfortunately, there's no way to recover it unless you find your previous posting URL page! Always bookmark this page - it's your only key to your lifeline.</p>
+								<p>Unfortunately, <strong>there's no way to recover it</strong> unless you find your previous posting URL page! <strong>Always bookmark this page</strong> - it's your <strong>only key</strong> to your lifeline.</p>
 							</div>
 						</div>
 					</div>
