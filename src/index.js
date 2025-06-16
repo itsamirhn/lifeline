@@ -238,6 +238,34 @@ async function handleTimelinePage(uuid, env) {
 						margin-bottom: 15px;
 						color: #444;
 					}
+					.collapsible {
+						cursor: pointer;
+						user-select: none;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						gap: 8px;
+					}
+					.collapsible:hover {
+						color: #0051a2;
+					}
+					.collapse-icon {
+						transition: transform 0.3s ease;
+						font-size: 14px;
+					}
+					.collapsed .collapse-icon {
+						transform: rotate(-90deg);
+					}
+					.faq-content {
+						overflow: hidden;
+						transition: max-height 0.3s ease;
+					}
+					.faq-content.collapsed {
+						max-height: 0;
+					}
+					.faq-content.expanded {
+						max-height: 1000px;
+					}
 					
 					/* Mobile styles */
 					@media (max-width: 768px) {
@@ -290,21 +318,26 @@ async function handleTimelinePage(uuid, env) {
 					</div>
 					
 					<div class="faq">
-						<h2>💡 Quick Tips</h2>
+						<h2 class="collapsible collapsed" onclick="toggleTips()">
+							💡 Quick Tips
+							<span class="collapse-icon">▼</span>
+						</h2>
 						
-						<div class="faq-item">
-							<h3>🎭 Want to reveal your identity?</h3>
-							<p>Send your real name in your first update so followers know who you are behind the anonymous username.</p>
-						</div>
+						<div class="faq-content collapsed" id="tipsContent">
+							<div class="faq-item">
+								<h3>🎭 Want to reveal your identity?</h3>
+								<p>Send your real name in your first update so followers know who you are behind the anonymous username.</p>
+							</div>
 
-						<div class="faq-item">
-							<h3>🔄 RSS feed compromised?</h3>
-							<p>Use the red "Regenerate RSS URL" button when your feed link gets leaked and you want to invalidate previous links before sharing new ones with your friends.</p>
-						</div>
+							<div class="faq-item">
+								<h3>🔄 RSS feed compromised?</h3>
+								<p>Use the red "Regenerate RSS URL" button when your feed link gets leaked and you want to invalidate previous links before sharing new ones with your friends.</p>
+							</div>
 
-						<div class="faq-item">
-							<h3>😱 Lost your posting page?</h3>
-							<p>Unfortunately, there's no way to recover it unless you find your previous posting URL page! Always bookmark this page - it's your only key to your lifeline.</p>
+							<div class="faq-item">
+								<h3>😱 Lost your posting page?</h3>
+								<p>Unfortunately, there's no way to recover it unless you find your previous posting URL page! Always bookmark this page - it's your only key to your lifeline.</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -337,6 +370,21 @@ async function handleTimelinePage(uuid, env) {
 						}).catch(err => {
 							console.error('Failed to copy URL:', err);
 						});
+					}
+
+					function toggleTips() {
+						const header = document.querySelector('.collapsible');
+						const content = document.getElementById('tipsContent');
+						
+						if (content.classList.contains('collapsed')) {
+							content.classList.remove('collapsed');
+							content.classList.add('expanded');
+							header.classList.remove('collapsed');
+						} else {
+							content.classList.remove('expanded');
+							content.classList.add('collapsed');
+							header.classList.add('collapsed');
+						}
 					}
 				</script>
 			</body>
