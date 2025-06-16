@@ -1,94 +1,77 @@
-# Lifeline
+# 📝 Lifeline
 
-A simple Cloudflare Worker application that allows users to create a personal timeline feed that can be shared via RSS.
+During times of crisis, staying connected with loved ones becomes crucial. Lifeline was created to provide a simple, reliable way to broadcast your status and updates when direct communication might be challenging.
+
+## Example Scenario
+
+Imagine you're in a situation where:
+
+- You want to let your friends and family know you're safe
+- You don't have time or energy for individual messages
+- You need a reliable way to broadcast updates
+- You want to maintain complete anonymity while keeping people informed
+
+With Lifeline, you can:
+
+1. Create your personal timeline (no authentication required)
+2. Share the RSS feed link with your trusted circle
+3. Post quick updates like "I'm safe" or "Moving to a new location"
+4. Your loved ones can subscribe to your feed and get instant notifications
+
+No need for complex messaging or social media. Just simple, reliable status updates that reach everyone who needs to know. Your identity remains completely private - no one knows who you are or who's following your updates.
+
+---
+
+A personal timeline feed application built with Cloudflare Workers that lets you create and share your life updates via RSS. Share your moments, thoughts, and updates in a simple, chronological feed that others can subscribe to.
 
 ## Features
 
-- Generate unique user identifiers with random meaningful names
+- Create a personal timeline with unique identifiers (fully anonymous)
 - Post short messages (up to 255 characters)
-- Generate and manage RSS feeds for timeline updates
-- Minimal and clean interface
+- Generate and manage RSS feeds for your updates
+- Clean and minimal interface
+- No authentication required - complete privacy
+- No tracking of followers or subscribers
 
-## Setup
+## Quick Start
 
-1. Install Wrangler CLI:
+1. Install dependencies:
 
 ```bash
-yarn global add wrangler
+yarn install
 ```
 
-2. Login to Cloudflare:
+2. Set up Cloudflare:
 
 ```bash
 wrangler login
-```
-
-3. Create a D1 database:
-
-```bash
 wrangler d1 create lifeline-db
 ```
 
-4. Update the `wrangler.toml` file with your database ID
+3. Update `wrangler.jsonc` with your database ID
 
-5. Initialize the database schema:
-
-```bash
-wrangler d1 execute lifeline-db --file=./schema.sql
-```
-
-6. Deploy the worker:
+4. Deploy:
 
 ```bash
 yarn deploy
 ```
 
-## Database Schema
-
-The application uses Cloudflare D1 with the following schema:
-
-```sql
-CREATE TABLE users (
-    uuid TEXT PRIMARY KEY,
-    username TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE posts (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_uuid TEXT NOT NULL,
-    content TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_uuid) REFERENCES users(uuid)
-);
-
-CREATE TABLE rss_tokens (
-    user_uuid TEXT PRIMARY KEY,
-    token TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_uuid) REFERENCES users(uuid)
-);
-```
-
 ## Development
 
-1. Start the development server:
+Run locally:
 
 ```bash
 yarn dev
 ```
 
-2. Test the application locally at `http://localhost:8787`
+Visit `http://localhost:8787` to test the application.
 
 ## Deployment
 
-To deploy the worker to Cloudflare:
-
-1. Make sure you have the correct database ID in `wrangler.toml`
-2. Run:
+Deploy to Cloudflare:
 
 ```bash
 yarn deploy
 ```
 
-The worker will be available at your Cloudflare Workers domain.
+Your timeline will be available at your Cloudflare Workers domain.
